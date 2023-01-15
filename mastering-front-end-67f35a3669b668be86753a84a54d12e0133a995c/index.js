@@ -1,3 +1,14 @@
+class Question {
+  constructor(text, choices, answer){
+    this.text = text;
+    this.choices = choices;
+    this.answer = answer
+  }
+  isCorrectAnswer(choice){
+    return choice === this.answer;
+  }
+}
+
 const questions = [
   new Question(
     "Quelle méthode Javascript permet de filtrer les éléments d'un tableau",
@@ -20,3 +31,42 @@ const questions = [
     "Math.round()"
   ),
 ];
+
+class Quiz {
+  constructor(questions){
+    this.score = 0;
+    this.questions = questions;
+    this.currentQuestionIndex = 0;
+  }
+  getCurrentQuestion() {
+    return this.question[this.currentQuestionIndex];
+  }
+  guess(answer){
+    if(this.getCurrentQuestion().isCorrectAnswer(answer)) {
+      this.score++
+    }
+    this.currentQuestionIndex++;
+  }
+  hasEnded() {
+    return this.currentQuestionIndex >= this.questions.length;
+  }
+}
+//Affichage du jeu
+const display = {
+
+}
+
+//logique du jeu
+quizApp = () => {
+  if(quiz.hasEnded()){
+    //Ecran de fin
+  } else {
+    //Afficher question, choix, progression.
+
+  }
+}
+
+
+//creation quizz
+let quiz = new Quiz(questions);
+quizApp();
